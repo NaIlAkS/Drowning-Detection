@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import "./SupervisorPage.css";
 
-const socket = io.connect("http://127.0.0.1:5001");
+const socket = io.connect("https://drowning-flask.onrender.com");
 
 // ✅ Use Public Folder Path for Alert Sound
 const drowningAlertSound = new Audio("/danger_warning.mp3");
@@ -46,7 +46,7 @@ const SupervisorPage = () => {
   // ✅ Fetch Alert Logs from Backend
   const fetchAlertLogs = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/alerts");
+      const response = await axios.get("https://drowning-flask.onrender.com/alerts");
       setAlertLogs(response.data);
       console.log("✅ Alert Logs Fetched:", response.data);
     } catch (error) {
@@ -85,7 +85,7 @@ const SupervisorPage = () => {
     setIsUploading(true);
 
     try {
-      const response = await axios.post("http://localhost:10000/supervisor/upload", formData, {
+      const response = await axios.post("https://drowning-backend.onrender.com/supervisor/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -124,7 +124,7 @@ const SupervisorPage = () => {
 
       console.log("📡 Sending alert with Supervisor ID:", supervisorId);
 
-      const response = await axios.post("http://localhost:5001/alerts", {
+      const response = await axios.post("https://drowning-flask.onrender.com/alerts", {
         videoId,
         supervisorId,
       });
