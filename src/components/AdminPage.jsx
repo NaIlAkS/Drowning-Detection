@@ -15,7 +15,7 @@ const AdminPage = () => {
 
   // ✅ Fetch Stored Videos for Historical Analysis
   useEffect(() => {
-    axios.get("http://localhost:4050/videos")
+    axios.get("http://localhost:10000/videos")
       .then((response) => {
         setVideos(response.data);
       })
@@ -34,7 +34,7 @@ const AdminPage = () => {
     const endpoint = role === "Lifeguard" ? "/lifeguard/register" : "/supervisor/register";
 
     try {
-      const response = await fetch(`http://localhost:4050${endpoint}`, {
+      const response = await fetch(`http://localhost:10000${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lname: name, password, phone_number: phone }),
@@ -66,8 +66,8 @@ const AdminPage = () => {
     const fetchUsers = async () => {
       try {
         const [lifeguardRes, supervisorRes] = await Promise.all([
-          fetch("http://localhost:4050/lifeguard/all"),
-          fetch("http://localhost:4050/supervisor/all"),
+          fetch("http://localhost:10000/lifeguard/all"),
+          fetch("http://localhost:10000/supervisor/all"),
         ]);
 
         if (!lifeguardRes.ok || !supervisorRes.ok) {
@@ -114,8 +114,8 @@ const AdminPage = () => {
     }
 
     const endpoint = user.role === "Lifeguard" 
-      ? `http://localhost:4050/lifeguard/remove/${deletePhone}`
-      : `http://localhost:4050/supervisor/remove/${deletePhone}`;
+      ? `http://localhost:10000/lifeguard/remove/${deletePhone}`
+      : `http://localhost:10000/supervisor/remove/${deletePhone}`;
 
     try {
       const response = await fetch(endpoint, { method: "DELETE" });
@@ -204,7 +204,7 @@ const AdminPage = () => {
             videos.map((video) => (
               <div key={video.id} className="video-thumbnail" onClick={() => setSelectedVideo(video)}>
                 <video width="150" height="100" muted>
-                  <source src={`http://localhost:4050/videos/${video.id}`} type="video/mp4" />
+                  <source src={`http://localhost:10000/videos/${video.id}`} type="video/mp4" />
                   ❌ Your browser does not support the video tag.
                 </video>
                 <p>{video.id}</p>
@@ -221,7 +221,7 @@ const AdminPage = () => {
         <div className="video-player">
           <h2>🎥 Playing: {selectedVideo.filename}</h2>
           <video controls width="600" autoPlay>
-            <source src={`http://localhost:4050/videos/${selectedVideo.id}`} type="video/mp4" />
+            <source src={`http://localhost:10000/videos/${selectedVideo.id}`} type="video/mp4" />
             ❌ Your browser does not support the video tag.
           </video>
           <button onClick={() => setSelectedVideo(null)}>Close</button>
