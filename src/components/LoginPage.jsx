@@ -31,8 +31,8 @@ const LoginPage = () => {
 
     try {
         const endpoint = role === "supervisor"
-            ? "http://localhost:4050/supervisor/login"
-            : "http://localhost:4050/lifeguard/login";
+            ? "http://localhost:10000/supervisor/login"
+            : "http://localhost:10000/lifeguard/login";
 
         console.log("📡 Sending Login Request:", { lname: username, password });
 
