@@ -221,7 +221,7 @@ const AdminPage = () => {
         <div className="video-player">
           <h2>🎥 Playing: {selectedVideo.filename}</h2>
           <video controls width="600" autoPlay>
-            <source src={'https://drowning-backend.onrender.com/videos/${selectedVideo.id}`} type="video/mp4" />
+            <source src={`https://drowning-backend.onrender.com/videos/${selectedVideo.id}`} type="video/mp4" />
             ❌ Your browser does not support the video tag.
           </video>
           <button onClick={() => setSelectedVideo(null)}>Close</button>
