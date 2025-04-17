@@ -95,7 +95,7 @@ const SupervisorPage = () => {
 
       console.log("📡 Sending video ID:", videoId);
       const detectResponse = await axios.post(
-        "http://127.0.0.1:5001/detect",
+        "https://drowning-flask.onrender.com/detect",
         { videoId },
         { headers: { "Content-Type": "application/json" } }
       );
