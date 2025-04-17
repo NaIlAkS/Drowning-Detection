@@ -85,7 +85,7 @@ const SupervisorPage = () => {
     setIsUploading(true);
 
     try {
-      const response = await axios.post("http://localhost:4050/supervisor/upload", formData, {
+      const response = await axios.post("http://localhost:10000/supervisor/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
