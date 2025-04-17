@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import axios from "axios";
 import "./LifeguardPage.css";
 
-const socket = io("http://localhost:5001"); // ✅ WebSocket connection
+const socket = io("https://drowning-flask.onrender.com"); // ✅ WebSocket connection
 
 const LifeguardPage = () => {
   const [videoId, setVideoId] = useState(null);
@@ -15,7 +15,7 @@ const LifeguardPage = () => {
     socket.on("lifeguardAlert", (data) => {
       console.log("🚨 Drowning Alert Received!", data);
       setVideoId(data.videoId);
-      setStreamUrl(`http://127.0.0.1:5001/lifeguard-video/${data.videoId}`);
+      setStreamUrl(`https://drowning-flask.onrender.com/lifeguard-video/${data.videoId}`);
     });
 
     return () => {
